@@ -1,0 +1,23 @@
+{
+  "mode": "A",
+  "case_id": "NR-CELL-1008",
+  "question": "调查小区 NR-CELL-1008 的下行吞吐是否异常，比较可能原因并给出证据。\n以下是可用的基线和异常窗口汇总：{\"id\": \"NR-CELL-1008\", \"bandwidth_mhz\": 100, \"baseline\": {\"dl_throughput_mbps_mean\": 436, \"rsrp_dbm_median\": -93, \"sinr_db_median\": 17, \"cqi_mean\": 12, \"prb_utilization_pct_mean\": 52, \"active_users_mean\": 42, \"bler_pct_mean\": 3, \"sample_count\": 24, \"per_user_throughput_mbps\": 10.380952380952381}, \"incident\": {\"dl_throughput_mbps_mean\": 190, \"rsrp_dbm_median\": -92, \"sinr_db_median\": 17, \"cqi_mean\": 12, \"prb_utilization_pct_mean\": 54, \"active_users_mean\": 44, \"bler_pct_mean\": 4, \"sample_count\": 24, \"per_user_throughput_mbps\": 4.318181818181818}}",
+  "answer": "{\n  \"label\": \"CONGESTION\",\n  \"reason\": \"下行吞吐量显著下降，可能由于小区资源分配不足或用户数增加导致的PRB利用率上升。\",\n  \"support\": \"基线下行吞吐为436 Mbps，而异常窗口中下行吞吐为190 Mbps，下降幅度较大；同时PRB利用率从52%上升至54%，用户数从42增加到44，表明资源可能被过度使用。\",\n  \"counter\": \"PRB利用率和用户数的增加可能表明小区资源紧张，需要进一步检查资源分配和用户分布。\",\n  \"next_step\": \"检查小区的资源分配策略，确认是否需要增加PRB或调整用户优先级，同时监控吞吐量和用户数变化以确认问题是否持续。\"\n}",
+  "trace": [
+    {
+      "kind": "model",
+      "content": "{\n  \"label\": \"CONGESTION\",\n  \"reason\": \"下行吞吐量显著下降，可能由于小区资源分配不足或用户数增加导致的PRB利用率上升。\",\n  \"support\": \"基线下行吞吐为436 Mbps，而异常窗口中下行吞吐为190 Mbps，下降幅度较大；同时PRB利用率从52%上升至54%，用户数从42增加到44，表明资源可能被过度使用。\",\n  \"counter\": \"PRB利用率和用户数的增加可能表明小区资源紧张，需要进一步检查资源分配和用户分布。\",\n  \"next_step\": \"检查小区的资源分配策略，确认是否需要增加PRB或调整用户优先级，同时监控吞吐量和用户数变化以确认问题是否持续。\"\n}",
+      "tool_calls": [],
+      "usage": {
+        "completion_tokens": 173,
+        "prompt_tokens": 343,
+        "total_tokens": 516,
+        "prompt_tokens_details": {
+          "cached_tokens": 64
+        }
+      }
+    }
+  ],
+  "seconds": 2.46,
+  "skill_loaded": false
+}

@@ -1,0 +1,122 @@
+{
+  "mode": "B",
+  "case_id": "NR-CELL-1006",
+  "question": "调查小区 NR-CELL-1006 的下行吞吐是否异常，比较可能原因并给出证据。可使用工具查询并计算。",
+  "answer": "{\n  \"label\": \"CONGESTION\",\n  \"reason\": \"下行吞吐在异常窗口显著下降，且PRB利用率缺失，可能表明资源分配不足或用户数过多导致拥塞。\",\n  \"support\": \"异常窗口的下行吞吐为205.516 Mbps，而基线窗口为377.461 Mbps，下降了45.55%。PRB利用率缺失，可能表明资源分配不足。\",\n  \"counter\": \"异常窗口的下行吞吐显著低于基线窗口，且PRB利用率缺失，可能表明资源分配不足或用户数过多。\",\n  \"next_step\": \"检查PRB利用率和用户数，确认资源分配是否充足，必要时调整资源分配策略。\"\n}",
+  "trace": [
+    {
+      "kind": "model",
+      "content": "",
+      "tool_calls": [
+        {
+          "type": "function",
+          "function": {
+            "name": "get_kpi",
+            "arguments": "{\"case_id\": \"NR-CELL-1006\"}"
+          },
+          "id": "wBnwFcvT8EQjou8s2abpTbAQ8eDLX5Dx"
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "compare_windows",
+            "arguments": "{\"case_id\": \"NR-CELL-1006\"}"
+          },
+          "id": "RaASLjRlToXBSvSVJ5NKpgA56aXkCy2S"
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "calculate_capacity",
+            "arguments": "{\"case_id\": \"NR-CELL-1006\"}"
+          },
+          "id": "AN7FgAP5Pai4FO8uEScGfUW1Qm5UT5zJ"
+        }
+      ],
+      "usage": {
+        "completion_tokens": 85,
+        "prompt_tokens": 386,
+        "total_tokens": 471,
+        "prompt_tokens_details": {
+          "cached_tokens": 355
+        }
+      }
+    },
+    {
+      "kind": "tool",
+      "name": "get_kpi",
+      "arguments": "{\"case_id\": \"NR-CELL-1006\"}",
+      "result": {
+        "id": "NR-CELL-1006",
+        "bandwidth_mhz": 100.0,
+        "baseline": {
+          "sample_count": 24,
+          "rsrp_dbm_median": -91.865,
+          "sinr_db_median": 14.025,
+          "cqi_mean": 10.0525,
+          "prb_utilization_pct_mean": null,
+          "active_users_mean": 38.41125,
+          "dl_throughput_mbps_mean": 377.46125,
+          "bler_pct_mean": 4.022083333333334,
+          "per_user_throughput_mbps": 9.82684109473136
+        },
+        "incident": {
+          "sample_count": 24,
+          "rsrp_dbm_median": -108.055,
+          "sinr_db_median": 8.275,
+          "cqi_mean": 7.0304166666666665,
+          "prb_utilization_pct_mean": null,
+          "active_users_mean": 35.70916666666667,
+          "dl_throughput_mbps_mean": 205.51666666666665,
+          "bler_pct_mean": 5.9070833333333335,
+          "per_user_throughput_mbps": 5.7552915917948235
+        }
+      }
+    },
+    {
+      "kind": "tool",
+      "name": "compare_windows",
+      "arguments": "{\"case_id\": \"NR-CELL-1006\"}",
+      "result": {
+        "rsrp_dbm_median": -16.19,
+        "sinr_db_median": -5.75,
+        "cqi_mean": -3.022,
+        "prb_utilization_pct_mean": null,
+        "active_users_mean": -2.702,
+        "dl_throughput_mbps_mean": -171.945,
+        "bler_pct_mean": 1.885,
+        "per_user_throughput_mbps": -4.072,
+        "throughput_change_percent": -45.55,
+        "missing": [
+          "prb_utilization_pct_mean"
+        ]
+      }
+    },
+    {
+      "kind": "tool",
+      "name": "calculate_capacity",
+      "arguments": "{\"case_id\": \"NR-CELL-1006\"}",
+      "result": {
+        "bandwidth_mhz": 100.0,
+        "sinr_db": 8.275,
+        "shannon_mbps": 294.9,
+        "note": "单链路理想条件参考，不等于实际小区吞吐"
+      }
+    },
+    {
+      "kind": "model",
+      "content": "{\n  \"label\": \"CONGESTION\",\n  \"reason\": \"下行吞吐在异常窗口显著下降，且PRB利用率缺失，可能表明资源分配不足或用户数过多导致拥塞。\",\n  \"support\": \"异常窗口的下行吞吐为205.516 Mbps，而基线窗口为377.461 Mbps，下降了45.55%。PRB利用率缺失，可能表明资源分配不足。\",\n  \"counter\": \"异常窗口的下行吞吐显著低于基线窗口，且PRB利用率缺失，可能表明资源分配不足或用户数过多。\",\n  \"next_step\": \"检查PRB利用率和用户数，确认资源分配是否充足，必要时调整资源分配策略。\"\n}",
+      "tool_calls": [],
+      "usage": {
+        "completion_tokens": 161,
+        "prompt_tokens": 1029,
+        "total_tokens": 1190,
+        "prompt_tokens_details": {
+          "cached_tokens": 382
+        }
+      }
+    }
+  ],
+  "seconds": 3.99,
+  "skill_loaded": false
+}

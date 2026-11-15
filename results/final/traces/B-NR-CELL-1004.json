@@ -1,0 +1,121 @@
+{
+  "mode": "B",
+  "case_id": "NR-CELL-1004",
+  "question": "调查小区 NR-CELL-1004 的下行吞吐是否异常，比较可能原因并给出证据。可使用工具查询并计算。",
+  "answer": "{\n  \"label\": \"CONGESTION\",\n  \"reason\": \"下行吞吐在异常窗口中下降了0.73%，同时PRB利用率增加了1.46%，这表明小区可能因用户数量增加或资源分配不均而出现拥塞。\",\n  \"support\": \"异常窗口的dl_throughput_mbps_mean为448.55916666666667 Mbps，比基线窗口的451.87833333333333 Mbps下降了3.319 Mbps，同时PRB利用率增加了1.461%。\",\n  \"counter\": \"异常窗口的PRB利用率比基线窗口高1.461%，而用户数增加了2.54%。\",\n  \"next_step\": \"需要进一步检查小区的资源分配策略和用户分布情况，以确定是否需要调整资源分配或增加小区容量。\"\n}",
+  "trace": [
+    {
+      "kind": "model",
+      "content": "",
+      "tool_calls": [
+        {
+          "type": "function",
+          "function": {
+            "name": "get_kpi",
+            "arguments": "{\"case_id\": \"NR-CELL-1004\"}"
+          },
+          "id": "uhmNTZsuMgQVHSAYd1yqN9irKKoUkEVW"
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "compare_windows",
+            "arguments": "{\"case_id\": \"NR-CELL-1004\"}"
+          },
+          "id": "5HRlKp8nizsyfCcQTY8FbdlezrHG2VBE"
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "calculate_capacity",
+            "arguments": "{\"case_id\": \"NR-CELL-1004\"}"
+          },
+          "id": "5SSamT1bongbpBi15skPx9RDTUJtaIAD"
+        }
+      ],
+      "usage": {
+        "completion_tokens": 85,
+        "prompt_tokens": 386,
+        "total_tokens": 471,
+        "prompt_tokens_details": {
+          "cached_tokens": 355
+        }
+      }
+    },
+    {
+      "kind": "tool",
+      "name": "get_kpi",
+      "arguments": "{\"case_id\": \"NR-CELL-1004\"}",
+      "result": {
+        "id": "NR-CELL-1004",
+        "bandwidth_mhz": 100.0,
+        "baseline": {
+          "sample_count": 24,
+          "rsrp_dbm_median": -90.86500000000001,
+          "sinr_db_median": 17.6,
+          "cqi_mean": 11.94,
+          "prb_utilization_pct_mean": 47.57791666666666,
+          "active_users_mean": 39.9575,
+          "dl_throughput_mbps_mean": 451.87833333333333,
+          "bler_pct_mean": 2.97,
+          "per_user_throughput_mbps": 11.308974118334062
+        },
+        "incident": {
+          "sample_count": 24,
+          "rsrp_dbm_median": -91.075,
+          "sinr_db_median": 17.59,
+          "cqi_mean": 12.029583333333333,
+          "prb_utilization_pct_mean": 49.03875,
+          "active_users_mean": 40.97083333333333,
+          "dl_throughput_mbps_mean": 448.55916666666667,
+          "bler_pct_mean": 2.99,
+          "per_user_throughput_mbps": 10.948255873080443
+        }
+      }
+    },
+    {
+      "kind": "tool",
+      "name": "compare_windows",
+      "arguments": "{\"case_id\": \"NR-CELL-1004\"}",
+      "result": {
+        "rsrp_dbm_median": -0.21,
+        "sinr_db_median": -0.01,
+        "cqi_mean": 0.09,
+        "prb_utilization_pct_mean": 1.461,
+        "active_users_mean": 1.013,
+        "dl_throughput_mbps_mean": -3.319,
+        "bler_pct_mean": 0.02,
+        "per_user_throughput_mbps": -0.361,
+        "throughput_change_percent": -0.73,
+        "users_change_percent": 2.54,
+        "missing": []
+      }
+    },
+    {
+      "kind": "tool",
+      "name": "calculate_capacity",
+      "arguments": "{\"case_id\": \"NR-CELL-1004\"}",
+      "result": {
+        "bandwidth_mhz": 100.0,
+        "sinr_db": 17.59,
+        "shannon_mbps": 586.82,
+        "note": "单链路理想条件参考，不等于实际小区吞吐"
+      }
+    },
+    {
+      "kind": "model",
+      "content": "{\n  \"label\": \"CONGESTION\",\n  \"reason\": \"下行吞吐在异常窗口中下降了0.73%，同时PRB利用率增加了1.46%，这表明小区可能因用户数量增加或资源分配不均而出现拥塞。\",\n  \"support\": \"异常窗口的dl_throughput_mbps_mean为448.55916666666667 Mbps，比基线窗口的451.87833333333333 Mbps下降了3.319 Mbps，同时PRB利用率增加了1.461%。\",\n  \"counter\": \"异常窗口的PRB利用率比基线窗口高1.461%，而用户数增加了2.54%。\",\n  \"next_step\": \"需要进一步检查小区的资源分配策略和用户分布情况，以确定是否需要调整资源分配或增加小区容量。\"\n}",
+      "tool_calls": [],
+      "usage": {
+        "completion_tokens": 203,
+        "prompt_tokens": 1048,
+        "total_tokens": 1251,
+        "prompt_tokens_details": {
+          "cached_tokens": 382
+        }
+      }
+    }
+  ],
+  "seconds": 4.42,
+  "skill_loaded": false
+}

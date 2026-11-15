@@ -1,0 +1,23 @@
+{
+  "mode": "A",
+  "case_id": "NR-CELL-1009",
+  "question": "调查小区 NR-CELL-1009 的下行吞吐是否异常，比较可能原因并给出证据。\n以下是可用的基线和异常窗口汇总：{\"id\": \"NR-CELL-1009\", \"bandwidth_mhz\": 100, \"baseline\": {\"dl_throughput_mbps_mean\": 400, \"rsrp_dbm_median\": -90, \"sinr_db_median\": 19, \"cqi_mean\": 12, \"prb_utilization_pct_mean\": 47, \"active_users_mean\": 35, \"bler_pct_mean\": 3, \"sample_count\": 24, \"per_user_throughput_mbps\": 11.428571428571429}, \"incident\": {\"dl_throughput_mbps_mean\": 364, \"rsrp_dbm_median\": -91, \"sinr_db_median\": 18, \"cqi_mean\": 12, \"prb_utilization_pct_mean\": 49, \"active_users_mean\": 38, \"bler_pct_mean\": 4, \"sample_count\": 24, \"per_user_throughput_mbps\": 9.578947368421053}}",
+  "answer": "{\n  \"label\": \"CONGESTION\",\n  \"reason\": \"下行吞吐量下降可能由于小区拥塞，导致PRB利用率增加，同时用户数增加但每用户吞吐量下降。\",\n  \"support\": \"PRB利用率从47%上升到49%，用户数从35增加到38，但每用户吞吐量从11.43 Mbps下降到9.58 Mbps。\",\n  \"counter\": \"PRB利用率增加和用户数增加可能表明小区拥塞，而每用户吞吐量下降进一步支持这一结论。\",\n  \"next_step\": \"检查小区的负载情况，确认是否需要增加容量或优化资源分配以缓解拥塞。\"\n}",
+  "trace": [
+    {
+      "kind": "model",
+      "content": "{\n  \"label\": \"CONGESTION\",\n  \"reason\": \"下行吞吐量下降可能由于小区拥塞，导致PRB利用率增加，同时用户数增加但每用户吞吐量下降。\",\n  \"support\": \"PRB利用率从47%上升到49%，用户数从35增加到38，但每用户吞吐量从11.43 Mbps下降到9.58 Mbps。\",\n  \"counter\": \"PRB利用率增加和用户数增加可能表明小区拥塞，而每用户吞吐量下降进一步支持这一结论。\",\n  \"next_step\": \"检查小区的负载情况，确认是否需要增加容量或优化资源分配以缓解拥塞。\"\n}",
+      "tool_calls": [],
+      "usage": {
+        "completion_tokens": 152,
+        "prompt_tokens": 343,
+        "total_tokens": 495,
+        "prompt_tokens_details": {
+          "cached_tokens": 64
+        }
+      }
+    }
+  ],
+  "seconds": 2.14,
+  "skill_loaded": false
+}

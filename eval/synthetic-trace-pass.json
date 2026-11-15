@@ -1,0 +1,51 @@
+{
+  "task_type": "batch-audit-diagnose",
+  "provenance": "SYNTHETIC_TEACHING_FIXTURE_NOT_A_REAL_DSH_TRACE",
+  "events": [
+    {
+      "kind": "skill_load",
+      "name": "wireless-link-workflow"
+    },
+    {
+      "kind": "tool",
+      "action": "validate",
+      "exit_code": 0,
+      "status": "PASS"
+    },
+    {
+      "kind": "tool",
+      "action": "compute",
+      "exit_code": 0,
+      "status": "UNVERIFIED"
+    },
+    {
+      "kind": "tool",
+      "action": "verify",
+      "exit_code": 0,
+      "status": "PASS"
+    },
+    {
+      "kind": "skill_load",
+      "name": "wireless-capacity-audit"
+    },
+    {
+      "kind": "tool",
+      "action": "audit",
+      "exit_code": 0,
+      "status": "PASS"
+    },
+    {
+      "kind": "skill_load",
+      "name": "wireless-ops-diagnosis"
+    },
+    {
+      "kind": "file_read",
+      "action": "read-reference",
+      "path": "knowledge/wireless/throughput.md"
+    },
+    {
+      "kind": "final",
+      "status": "PASS"
+    }
+  ]
+}

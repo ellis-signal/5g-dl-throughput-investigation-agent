@@ -1,0 +1,316 @@
+{
+  "mode": "D",
+  "case_id": "NR-CELL-1010",
+  "question": "调查小区 NR-CELL-1010 的下行吞吐是否异常，比较可能原因并给出证据。可使用工具查询并计算。",
+  "answer": "{\n  \"label\": \"INSUFFICIENT\",\n  \"reason\": \"关键观测缺失，先补齐对应窗口再判断。\",\n  \"next_step\": \"补齐缺失指标，或按时段拆分窗口并核查回传时延和丢包。\",\n  \"candidates\": [],\n  \"missing\": [\n    \"E3\"\n  ],\n  \"evidence\": {\n    \"E1\": {\n      \"metric\": \"吞吐变化 (%)\",\n      \"value\": -39.84\n    },\n    \"E2\": {\n      \"metric\": \"RSRP变化 (dB)\",\n      \"value\": -1\n    },\n    \"E3\": {\n      \"metric\": \"SINR变化 (dB)\",\n      \"value\": null\n    },\n    \"E4\": {\n      \"metric\": \"CQI变化\",\n      \"value\": -4\n    },\n    \"E5\": {\n      \"metric\": \"事发PRB (%)\",\n      \"value\": 54\n    },\n    \"E6\": {\n      \"metric\": \"PRB变化 (百分点)\",\n      \"value\": 1\n    },\n    \"E7\": {\n      \"metric\": \"活跃用户数变化 (%)\",\n      \"value\": 4.0\n    },\n    \"E8\": {\n      \"metric\": \"BLER变化 (百分点)\",\n      \"value\": 9\n    }\n  },\n  \"hypotheses\": {\n    \"COVERAGE\": [\n      {\n        \"evidence\": \"E2\",\n        \"criterion\": \"RSRP下降至少6 dB\",\n        \"status\": \"削弱\"\n      },\n      {\n        \"evidence\": \"E3\",\n        \"criterion\": \"SINR下降至少5 dB\",\n        \"status\": \"缺失\"\n      }\n    ],\n    \"INTERFERENCE\": [\n      {\n        \"evidence\": \"E2\",\n        \"criterion\": \"RSRP变化绝对值至多3 dB\",\n        \"status\": \"支持\"\n      },\n      {\n        \"evidence\": \"E3\",\n        \"criterion\": \"SINR下降至少5 dB\",\n        \"status\": \"缺失\"\n      },\n      {\n        \"evidence\": \"E4\",\n        \"criterion\": \"CQI下降至少2\",\n        \"status\": \"支持\"\n      },\n      {\n        \"evidence\": \"E8\",\n        \"criterion\": \"BLER增加至少5个百分点\",\n        \"status\": \"支持\"\n      }\n    ],\n    \"CONGESTION\": [\n      {\n        \"evidence\": \"E5\",\n        \"criterion\": \"事发PRB至少85%\",\n        \"status\": \"削弱\"\n      },\n      {\n        \"evidence\": \"E6\",\n        \"criterion\": \"PRB增加至少15个百分点\",\n        \"status\": \"削弱\"\n      },\n      {\n        \"evidence\": \"E7\",\n        \"criterion\": \"活跃用户数增加至少35%\",\n        \"status\": \"削弱\"\n      }\n    ]\n  }\n}",
+  "trace": [
+    {
+      "kind": "model",
+      "content": "",
+      "tool_calls": [
+        {
+          "type": "function",
+          "function": {
+            "name": "get_kpi",
+            "arguments": "{\"case_id\": \"NR-CELL-1010\"}"
+          },
+          "id": "ZSiw82XEvDe55exAorYSYPHAJTavRQq5"
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "compare_windows",
+            "arguments": "{\"case_id\": \"NR-CELL-1010\"}"
+          },
+          "id": "4yI6D0zfwLl6vbZC9j9nrq0HlC8u1Z8g"
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "calculate_capacity",
+            "arguments": "{\"case_id\": \"NR-CELL-1010\"}"
+          },
+          "id": "0ukAFt9C5mHMaC9rXfmprbcJUvHRRlRS"
+        }
+      ],
+      "usage": {
+        "completion_tokens": 85,
+        "prompt_tokens": 677,
+        "total_tokens": 762,
+        "prompt_tokens_details": {
+          "cached_tokens": 645
+        }
+      }
+    },
+    {
+      "kind": "tool",
+      "name": "get_kpi",
+      "arguments": "{\"case_id\": \"NR-CELL-1010\"}",
+      "result": {
+        "id": "NR-CELL-1010",
+        "bandwidth_mhz": 100,
+        "baseline": {
+          "dl_throughput_mbps_mean": 492,
+          "rsrp_dbm_median": -92,
+          "sinr_db_median": 17,
+          "cqi_mean": 11,
+          "prb_utilization_pct_mean": 53,
+          "active_users_mean": 50,
+          "bler_pct_mean": 4,
+          "sample_count": 24,
+          "per_user_throughput_mbps": 9.84
+        },
+        "incident": {
+          "dl_throughput_mbps_mean": 296,
+          "rsrp_dbm_median": -93,
+          "sinr_db_median": null,
+          "cqi_mean": 7,
+          "prb_utilization_pct_mean": 54,
+          "active_users_mean": 52,
+          "bler_pct_mean": 13,
+          "sample_count": 24,
+          "per_user_throughput_mbps": 5.6923076923076925
+        }
+      }
+    },
+    {
+      "kind": "tool",
+      "name": "compare_windows",
+      "arguments": "{\"case_id\": \"NR-CELL-1010\"}",
+      "result": {
+        "rsrp_dbm_median": -1,
+        "sinr_db_median": null,
+        "cqi_mean": -4,
+        "prb_utilization_pct_mean": 1,
+        "active_users_mean": 2,
+        "dl_throughput_mbps_mean": -196,
+        "bler_pct_mean": 9,
+        "per_user_throughput_mbps": -4.148,
+        "throughput_change_percent": -39.84,
+        "users_change_percent": 4.0,
+        "missing": [
+          "sinr_db_median"
+        ]
+      }
+    },
+    {
+      "kind": "tool",
+      "name": "calculate_capacity",
+      "arguments": "{\"case_id\": \"NR-CELL-1010\"}",
+      "result": {
+        "error": "异常窗口缺少SINR，无法计算容量"
+      }
+    },
+    {
+      "kind": "model",
+      "content": "{\n  \"label\": \"INSUFFICIENT\",\n  \"reason\": \"异常窗口缺少SINR数据，无法计算理想香农容量参考值，无法确定下行吞吐下降的根因。\",\n  \"support\": \"基线和异常窗口的RSRP、CQI、PRB利用率和用户数均显示下降，但SINR数据缺失。\",\n  \"counter\": \"异常窗口的SINR数据缺失，导致无法验证干扰或资源拥塞假设。\",\n  \"next_step\": \"补充异常窗口的SINR数据，重新计算香农容量参考值，并重新分析下行吞吐下降的可能原因。\"\n}",
+      "tool_calls": [],
+      "usage": {
+        "completion_tokens": 137,
+        "prompt_tokens": 1140,
+        "total_tokens": 1277,
+        "prompt_tokens_details": {
+          "cached_tokens": 673
+        }
+      }
+    },
+    {
+      "kind": "review",
+      "result": {
+        "label": "INSUFFICIENT",
+        "reason": "关键观测缺失，先补齐对应窗口再判断。",
+        "next_step": "补齐缺失指标，或按时段拆分窗口并核查回传时延和丢包。",
+        "candidates": [],
+        "missing": [
+          "E3"
+        ],
+        "evidence": {
+          "E1": {
+            "metric": "吞吐变化 (%)",
+            "value": -39.84
+          },
+          "E2": {
+            "metric": "RSRP变化 (dB)",
+            "value": -1
+          },
+          "E3": {
+            "metric": "SINR变化 (dB)",
+            "value": null
+          },
+          "E4": {
+            "metric": "CQI变化",
+            "value": -4
+          },
+          "E5": {
+            "metric": "事发PRB (%)",
+            "value": 54
+          },
+          "E6": {
+            "metric": "PRB变化 (百分点)",
+            "value": 1
+          },
+          "E7": {
+            "metric": "活跃用户数变化 (%)",
+            "value": 4.0
+          },
+          "E8": {
+            "metric": "BLER变化 (百分点)",
+            "value": 9
+          }
+        },
+        "hypotheses": {
+          "COVERAGE": [
+            {
+              "evidence": "E2",
+              "criterion": "RSRP下降至少6 dB",
+              "status": "削弱"
+            },
+            {
+              "evidence": "E3",
+              "criterion": "SINR下降至少5 dB",
+              "status": "缺失"
+            }
+          ],
+          "INTERFERENCE": [
+            {
+              "evidence": "E2",
+              "criterion": "RSRP变化绝对值至多3 dB",
+              "status": "支持"
+            },
+            {
+              "evidence": "E3",
+              "criterion": "SINR下降至少5 dB",
+              "status": "缺失"
+            },
+            {
+              "evidence": "E4",
+              "criterion": "CQI下降至少2",
+              "status": "支持"
+            },
+            {
+              "evidence": "E8",
+              "criterion": "BLER增加至少5个百分点",
+              "status": "支持"
+            }
+          ],
+          "CONGESTION": [
+            {
+              "evidence": "E5",
+              "criterion": "事发PRB至少85%",
+              "status": "削弱"
+            },
+            {
+              "evidence": "E6",
+              "criterion": "PRB增加至少15个百分点",
+              "status": "削弱"
+            },
+            {
+              "evidence": "E7",
+              "criterion": "活跃用户数增加至少35%",
+              "status": "削弱"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "seconds": 5.23,
+  "skill_loaded": true,
+  "model_answer": "{\n  \"label\": \"INSUFFICIENT\",\n  \"reason\": \"异常窗口缺少SINR数据，无法计算理想香农容量参考值，无法确定下行吞吐下降的根因。\",\n  \"support\": \"基线和异常窗口的RSRP、CQI、PRB利用率和用户数均显示下降，但SINR数据缺失。\",\n  \"counter\": \"异常窗口的SINR数据缺失，导致无法验证干扰或资源拥塞假设。\",\n  \"next_step\": \"补充异常窗口的SINR数据，重新计算香农容量参考值，并重新分析下行吞吐下降的可能原因。\"\n}",
+  "review": {
+    "label": "INSUFFICIENT",
+    "reason": "关键观测缺失，先补齐对应窗口再判断。",
+    "next_step": "补齐缺失指标，或按时段拆分窗口并核查回传时延和丢包。",
+    "candidates": [],
+    "missing": [
+      "E3"
+    ],
+    "evidence": {
+      "E1": {
+        "metric": "吞吐变化 (%)",
+        "value": -39.84
+      },
+      "E2": {
+        "metric": "RSRP变化 (dB)",
+        "value": -1
+      },
+      "E3": {
+        "metric": "SINR变化 (dB)",
+        "value": null
+      },
+      "E4": {
+        "metric": "CQI变化",
+        "value": -4
+      },
+      "E5": {
+        "metric": "事发PRB (%)",
+        "value": 54
+      },
+      "E6": {
+        "metric": "PRB变化 (百分点)",
+        "value": 1
+      },
+      "E7": {
+        "metric": "活跃用户数变化 (%)",
+        "value": 4.0
+      },
+      "E8": {
+        "metric": "BLER变化 (百分点)",
+        "value": 9
+      }
+    },
+    "hypotheses": {
+      "COVERAGE": [
+        {
+          "evidence": "E2",
+          "criterion": "RSRP下降至少6 dB",
+          "status": "削弱"
+        },
+        {
+          "evidence": "E3",
+          "criterion": "SINR下降至少5 dB",
+          "status": "缺失"
+        }
+      ],
+      "INTERFERENCE": [
+        {
+          "evidence": "E2",
+          "criterion": "RSRP变化绝对值至多3 dB",
+          "status": "支持"
+        },
+        {
+          "evidence": "E3",
+          "criterion": "SINR下降至少5 dB",
+          "status": "缺失"
+        },
+        {
+          "evidence": "E4",
+          "criterion": "CQI下降至少2",
+          "status": "支持"
+        },
+        {
+          "evidence": "E8",
+          "criterion": "BLER增加至少5个百分点",
+          "status": "支持"
+        }
+      ],
+      "CONGESTION": [
+        {
+          "evidence": "E5",
+          "criterion": "事发PRB至少85%",
+          "status": "削弱"
+        },
+        {
+          "evidence": "E6",
+          "criterion": "PRB增加至少15个百分点",
+          "status": "削弱"
+        },
+        {
+          "evidence": "E7",
+          "criterion": "活跃用户数增加至少35%",
+          "status": "削弱"
+        }
+      ]
+    }
+  }
+}

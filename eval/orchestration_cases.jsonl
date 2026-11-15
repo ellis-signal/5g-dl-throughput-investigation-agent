@@ -1,0 +1,5 @@
+{"task_type": "single", "required_skills": ["wireless-capacity-code"], "required_actions": ["capacity"]}
+{"task_type": "branch", "required_skills": ["wireless-link-branch"], "required_actions": ["route"]}
+{"task_type": "batch", "required_skills": ["wireless-link-workflow"], "required_actions": ["validate", "compute", "verify"]}
+{"task_type": "batch-audit", "required_skills": ["wireless-link-workflow", "wireless-capacity-audit"], "required_actions": ["validate", "compute", "verify", "audit"]}
+{"task_type": "batch-audit-diagnose", "required_skills": ["wireless-link-workflow", "wireless-capacity-audit", "wireless-ops-diagnosis"], "required_actions": ["validate", "compute", "verify", "audit", "read-reference"]}

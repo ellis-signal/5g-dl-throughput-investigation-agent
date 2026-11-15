@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "method_version": "shannon-awgn-v1",
+  "verification_status": "UNVERIFIED",
+  "source": {
+    "path": "data/links.json",
+    "sha256": "INVALID_HASH"
+  },
+  "case_count": 4,
+  "cases": [
+    {
+      "case_id": "link-a",
+      "bandwidth_mhz": 20,
+      "snr_db": 15,
+      "actual_throughput_mbps": 74,
+      "capacity_mbps": 999,
+      "throughput_to_capacity_ratio": 0.1
+    },
+    {
+      "case_id": "link-b",
+      "bandwidth_mhz": 10,
+      "snr_db": -4,
+      "actual_throughput_mbps": 3.3,
+      "capacity_mbps": 5,
+      "throughput_to_capacity_ratio": 0.66
+    }
+  ]
+}

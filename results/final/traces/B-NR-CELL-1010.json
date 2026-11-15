@@ -1,0 +1,120 @@
+{
+  "mode": "B",
+  "case_id": "NR-CELL-1010",
+  "question": "调查小区 NR-CELL-1010 的下行吞吐是否异常，比较可能原因并给出证据。可使用工具查询并计算。",
+  "answer": "{\n  \"label\": \"CONGESTION\",\n  \"reason\": \"下行吞吐量下降，可能由于用户数增加和PRB利用率增加，同时SINR缺失导致无法计算理想容量。\",\n  \"support\": \"基线吞吐量为492 Mbps，异常窗口吞吐量为296 Mbps，下降了39.84%。PRB利用率从53%增加到54%，用户数从50增加到52。SINR缺失导致无法计算理想容量。\",\n  \"counter\": \"异常窗口的吞吐量下降，PRB利用率增加，用户数增加，SINR缺失。\",\n  \"next_step\": \"检查SINR缺失的原因，可能需要重新计算容量或进行其他分析。\"\n}",
+  "trace": [
+    {
+      "kind": "model",
+      "content": "",
+      "tool_calls": [
+        {
+          "type": "function",
+          "function": {
+            "name": "get_kpi",
+            "arguments": "{\"case_id\": \"NR-CELL-1010\"}"
+          },
+          "id": "3zsqCowyeX1G6fgK3VvjWcqJJkEyAt7G"
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "compare_windows",
+            "arguments": "{\"case_id\": \"NR-CELL-1010\"}"
+          },
+          "id": "mYhwxgBsWHj6YS7csMbUASGtgYCmLqTk"
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "calculate_capacity",
+            "arguments": "{\"case_id\": \"NR-CELL-1010\"}"
+          },
+          "id": "6LidIjqKJO7JhmyTzNGtocprYG8LXcYF"
+        }
+      ],
+      "usage": {
+        "completion_tokens": 85,
+        "prompt_tokens": 386,
+        "total_tokens": 471,
+        "prompt_tokens_details": {
+          "cached_tokens": 354
+        }
+      }
+    },
+    {
+      "kind": "tool",
+      "name": "get_kpi",
+      "arguments": "{\"case_id\": \"NR-CELL-1010\"}",
+      "result": {
+        "id": "NR-CELL-1010",
+        "bandwidth_mhz": 100,
+        "baseline": {
+          "dl_throughput_mbps_mean": 492,
+          "rsrp_dbm_median": -92,
+          "sinr_db_median": 17,
+          "cqi_mean": 11,
+          "prb_utilization_pct_mean": 53,
+          "active_users_mean": 50,
+          "bler_pct_mean": 4,
+          "sample_count": 24,
+          "per_user_throughput_mbps": 9.84
+        },
+        "incident": {
+          "dl_throughput_mbps_mean": 296,
+          "rsrp_dbm_median": -93,
+          "sinr_db_median": null,
+          "cqi_mean": 7,
+          "prb_utilization_pct_mean": 54,
+          "active_users_mean": 52,
+          "bler_pct_mean": 13,
+          "sample_count": 24,
+          "per_user_throughput_mbps": 5.6923076923076925
+        }
+      }
+    },
+    {
+      "kind": "tool",
+      "name": "compare_windows",
+      "arguments": "{\"case_id\": \"NR-CELL-1010\"}",
+      "result": {
+        "rsrp_dbm_median": -1,
+        "sinr_db_median": null,
+        "cqi_mean": -4,
+        "prb_utilization_pct_mean": 1,
+        "active_users_mean": 2,
+        "dl_throughput_mbps_mean": -196,
+        "bler_pct_mean": 9,
+        "per_user_throughput_mbps": -4.148,
+        "throughput_change_percent": -39.84,
+        "users_change_percent": 4.0,
+        "missing": [
+          "sinr_db_median"
+        ]
+      }
+    },
+    {
+      "kind": "tool",
+      "name": "calculate_capacity",
+      "arguments": "{\"case_id\": \"NR-CELL-1010\"}",
+      "result": {
+        "error": "异常窗口缺少SINR，无法计算容量"
+      }
+    },
+    {
+      "kind": "model",
+      "content": "{\n  \"label\": \"CONGESTION\",\n  \"reason\": \"下行吞吐量下降，可能由于用户数增加和PRB利用率增加，同时SINR缺失导致无法计算理想容量。\",\n  \"support\": \"基线吞吐量为492 Mbps，异常窗口吞吐量为296 Mbps，下降了39.84%。PRB利用率从53%增加到54%，用户数从50增加到52。SINR缺失导致无法计算理想容量。\",\n  \"counter\": \"异常窗口的吞吐量下降，PRB利用率增加，用户数增加，SINR缺失。\",\n  \"next_step\": \"检查SINR缺失的原因，可能需要重新计算容量或进行其他分析。\"\n}",
+      "tool_calls": [],
+      "usage": {
+        "completion_tokens": 164,
+        "prompt_tokens": 849,
+        "total_tokens": 1013,
+        "prompt_tokens_details": {
+          "cached_tokens": 382
+        }
+      }
+    }
+  ],
+  "seconds": 5.59,
+  "skill_loaded": false
+}

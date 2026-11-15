@@ -1,0 +1,26 @@
+[
+  {
+    "case_id": "link-a",
+    "bandwidth_mhz": 20,
+    "snr_db": 15,
+    "actual_throughput_mbps": 74
+  },
+  {
+    "case_id": "link-b",
+    "bandwidth_mhz": 10,
+    "snr_db": -4,
+    "actual_throughput_mbps": 3.3
+  },
+  {
+    "case_id": "link-c",
+    "bandwidth_mhz": 40,
+    "snr_db": 8,
+    "actual_throughput_mbps": 66
+  },
+  {
+    "case_id": "link-d",
+    "bandwidth_mhz": 15,
+    "snr_db": 25,
+    "actual_throughput_mbps": 100
+  }
+]

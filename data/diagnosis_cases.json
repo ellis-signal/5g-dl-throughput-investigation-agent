@@ -1,0 +1,27 @@
+[
+  {
+    "case_id": "weak-coverage",
+    "symptom": "室内弱覆盖",
+    "rsrp_dbm": -114,
+    "sinr_db": -3,
+    "packet_loss_pct": 6.2,
+    "throughput_mbps": 2.8
+  },
+  {
+    "case_id": "slow-throughput",
+    "symptom": "信号不错但速率低",
+    "rsrp_dbm": -76,
+    "sinr_db": 23,
+    "packet_loss_pct": 0.4,
+    "throughput_mbps": 9.5
+  },
+  {
+    "case_id": "unstable-link",
+    "symptom": "时好时坏",
+    "rsrp_dbm": -88,
+    "sinr_db": 10,
+    "packet_loss_pct": 8.6,
+    "jitter_ms": 48,
+    "throughput_mbps": 15
+  }
+]

@@ -1,0 +1,120 @@
+{
+  "mode": "C",
+  "case_id": "NR-CELL-1003",
+  "question": "调查小区 NR-CELL-1003 的下行吞吐是否异常，比较可能原因并给出证据。可使用工具查询并计算。",
+  "answer": "{\n  \"label\": \"INTERFERENCE\",\n  \"reason\": \"下行吞吐下降可能由干扰引起，因为异常窗口的SINR下降了0.64 dB，而香农参考值为640.35 Mbps，实际吞吐为434.84 Mbps，低于理想条件。\",\n  \"support\": \"异常窗口的SINR下降了0.64 dB，可能表明干扰增加。\",\n  \"counter\": \"RSRP稳定，且CQI下降可能表明无线质量恶化，但未直接支持干扰。\",\n  \"next_step\": \"进一步调查干扰源，如邻区干扰或外部干扰。\"\n}",
+  "trace": [
+    {
+      "kind": "model",
+      "content": "",
+      "tool_calls": [
+        {
+          "type": "function",
+          "function": {
+            "name": "get_kpi",
+            "arguments": "{\"case_id\": \"NR-CELL-1003\"}"
+          },
+          "id": "hOZHQhD5KBKkRvKkme4oeB1GRpwBCJRS"
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "compare_windows",
+            "arguments": "{\"case_id\": \"NR-CELL-1003\"}"
+          },
+          "id": "OmXBlTWyv1cFOdLhRHBVhnOrjM881dvH"
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "calculate_capacity",
+            "arguments": "{\"case_id\": \"NR-CELL-1003\"}"
+          },
+          "id": "ldURymQb189QLtvdNo5IAouRgCmfBGFW"
+        }
+      ],
+      "usage": {
+        "completion_tokens": 85,
+        "prompt_tokens": 677,
+        "total_tokens": 762,
+        "prompt_tokens_details": {
+          "cached_tokens": 646
+        }
+      }
+    },
+    {
+      "kind": "tool",
+      "name": "get_kpi",
+      "arguments": "{\"case_id\": \"NR-CELL-1003\"}",
+      "result": {
+        "id": "NR-CELL-1003",
+        "bandwidth_mhz": 100.0,
+        "baseline": {
+          "sample_count": 24,
+          "rsrp_dbm_median": -89.71000000000001,
+          "sinr_db_median": 19.865000000000002,
+          "cqi_mean": 13.113333333333335,
+          "prb_utilization_pct_mean": 42.79291666666666,
+          "active_users_mean": 30.319166666666664,
+          "dl_throughput_mbps_mean": 539.865,
+          "bler_pct_mean": 2.9333333333333336,
+          "per_user_throughput_mbps": 17.80606327130803
+        },
+        "incident": {
+          "sample_count": 24,
+          "rsrp_dbm_median": -90.545,
+          "sinr_db_median": 19.225,
+          "cqi_mean": 12.121250000000002,
+          "prb_utilization_pct_mean": 97.46083333333333,
+          "active_users_mean": 130.0225,
+          "dl_throughput_mbps_mean": 434.84458333333333,
+          "bler_pct_mean": 4.9525,
+          "per_user_throughput_mbps": 3.344379498420145
+        }
+      }
+    },
+    {
+      "kind": "tool",
+      "name": "compare_windows",
+      "arguments": "{\"case_id\": \"NR-CELL-1003\"}",
+      "result": {
+        "rsrp_dbm_median": -0.835,
+        "sinr_db_median": -0.64,
+        "cqi_mean": -0.992,
+        "prb_utilization_pct_mean": 54.668,
+        "active_users_mean": 99.703,
+        "dl_throughput_mbps_mean": -105.02,
+        "bler_pct_mean": 2.019,
+        "per_user_throughput_mbps": -14.462,
+        "throughput_change_percent": -19.45,
+        "missing": []
+      }
+    },
+    {
+      "kind": "tool",
+      "name": "calculate_capacity",
+      "arguments": "{\"case_id\": \"NR-CELL-1003\"}",
+      "result": {
+        "bandwidth_mhz": 100.0,
+        "sinr_db": 19.225,
+        "shannon_mbps": 640.35,
+        "note": "单链路理想条件参考，不等于实际小区吞吐"
+      }
+    },
+    {
+      "kind": "model",
+      "content": "{\n  \"label\": \"INTERFERENCE\",\n  \"reason\": \"下行吞吐下降可能由干扰引起，因为异常窗口的SINR下降了0.64 dB，而香农参考值为640.35 Mbps，实际吞吐为434.84 Mbps，低于理想条件。\",\n  \"support\": \"异常窗口的SINR下降了0.64 dB，可能表明干扰增加。\",\n  \"counter\": \"RSRP稳定，且CQI下降可能表明无线质量恶化，但未直接支持干扰。\",\n  \"next_step\": \"进一步调查干扰源，如邻区干扰或外部干扰。\"\n}",
+      "tool_calls": [],
+      "usage": {
+        "completion_tokens": 141,
+        "prompt_tokens": 1379,
+        "total_tokens": 1520,
+        "prompt_tokens_details": {
+          "cached_tokens": 673
+        }
+      }
+    }
+  ],
+  "seconds": 3.99,
+  "skill_loaded": true
+}

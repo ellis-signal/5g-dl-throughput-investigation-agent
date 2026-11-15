@@ -1,0 +1,8 @@
+{"query": "计算 20MHz 15dB 香农理论容量", "expected_skill": "wireless-capacity"}
+{"query": "按统一模板分析容量并给示例", "expected_skill": "wireless-capacity-examples"}
+{"query": "真实调用 Python 返回容量 JSON", "expected_skill": "wireless-capacity-code"}
+{"query": "SNR=-5dB 如何选择分支", "expected_skill": "wireless-link-branch"}
+{"query": "校验并计算四条链路写报告", "expected_skill": "wireless-link-workflow"}
+{"query": "RSRP 弱覆盖该如何诊断", "expected_skill": "wireless-ops-diagnosis"}
+{"query": "独立审计坏报告并修复", "expected_skill": "wireless-capacity-audit"}
+{"query": "批量计算、诊断、审计并给出可信报告", "expected_skill": "wireless-link-orchestrator"}

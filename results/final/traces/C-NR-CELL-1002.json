@@ -1,0 +1,121 @@
+{
+  "mode": "C",
+  "case_id": "NR-CELL-1002",
+  "question": "调查小区 NR-CELL-1002 的下行吞吐是否异常，比较可能原因并给出证据。可使用工具查询并计算。",
+  "answer": "{\n  \"label\": \"CONGESTION\",\n  \"reason\": \"PRB利用率高且用户数增加，但单用户吞吐下降支持资源竞争，PRB高本身不足以证明拥塞。\",\n  \"support\": \"PRB利用率从52.75%上升到53.83%，用户数从41.31增加到42.81，但单用户吞吐从11.43 Mbps下降到2.25 Mbps。\",\n  \"counter\": \"RSRP和SINR下降，CQI下降，但PRB利用率和用户数增加并不直接证明拥塞。\",\n  \"next_step\": \"进一步调查资源分配和用户分布，确认是否资源拥塞是根本原因。\"\n}",
+  "trace": [
+    {
+      "kind": "model",
+      "content": "",
+      "tool_calls": [
+        {
+          "type": "function",
+          "function": {
+            "name": "get_kpi",
+            "arguments": "{\"case_id\": \"NR-CELL-1002\"}"
+          },
+          "id": "j5JJCuZ1BqYpmilmY67PM7uxgQdmM6aS"
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "compare_windows",
+            "arguments": "{\"case_id\": \"NR-CELL-1002\"}"
+          },
+          "id": "rYLM8dLIr7bNSaY6WpCrlKpqUpVeH01B"
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "calculate_capacity",
+            "arguments": "{\"case_id\": \"NR-CELL-1002\"}"
+          },
+          "id": "NKlPr2rDzHKRLHKvrnr2XQsyaZx61gml"
+        }
+      ],
+      "usage": {
+        "completion_tokens": 85,
+        "prompt_tokens": 677,
+        "total_tokens": 762,
+        "prompt_tokens_details": {
+          "cached_tokens": 646
+        }
+      }
+    },
+    {
+      "kind": "tool",
+      "name": "get_kpi",
+      "arguments": "{\"case_id\": \"NR-CELL-1002\"}",
+      "result": {
+        "id": "NR-CELL-1002",
+        "bandwidth_mhz": 100.0,
+        "baseline": {
+          "sample_count": 24,
+          "rsrp_dbm_median": -94.995,
+          "sinr_db_median": 18.045,
+          "cqi_mean": 11.763333333333334,
+          "prb_utilization_pct_mean": 52.74875,
+          "active_users_mean": 41.308749999999996,
+          "dl_throughput_mbps_mean": 472.2054166666667,
+          "bler_pct_mean": 3.89625,
+          "per_user_throughput_mbps": 11.431123349572832
+        },
+        "incident": {
+          "sample_count": 24,
+          "rsrp_dbm_median": -94.58500000000001,
+          "sinr_db_median": 1.6949999999999998,
+          "cqi_mean": 4.953333333333333,
+          "prb_utilization_pct_mean": 53.83166666666667,
+          "active_users_mean": 42.8125,
+          "dl_throughput_mbps_mean": 96.43583333333333,
+          "bler_pct_mean": 18.900000000000002,
+          "per_user_throughput_mbps": 2.2525158150851583
+        }
+      }
+    },
+    {
+      "kind": "tool",
+      "name": "compare_windows",
+      "arguments": "{\"case_id\": \"NR-CELL-1002\"}",
+      "result": {
+        "rsrp_dbm_median": 0.41,
+        "sinr_db_median": -16.35,
+        "cqi_mean": -6.81,
+        "prb_utilization_pct_mean": 1.083,
+        "active_users_mean": 1.504,
+        "dl_throughput_mbps_mean": -375.77,
+        "bler_pct_mean": 15.004,
+        "per_user_throughput_mbps": -9.179,
+        "throughput_change_percent": -79.58,
+        "users_change_percent": 3.64,
+        "missing": []
+      }
+    },
+    {
+      "kind": "tool",
+      "name": "calculate_capacity",
+      "arguments": "{\"case_id\": \"NR-CELL-1002\"}",
+      "result": {
+        "bandwidth_mhz": 100.0,
+        "sinr_db": 1.6949999999999998,
+        "shannon_mbps": 130.88,
+        "note": "单链路理想条件参考，不等于实际小区吞吐"
+      }
+    },
+    {
+      "kind": "model",
+      "content": "{\n  \"label\": \"CONGESTION\",\n  \"reason\": \"PRB利用率高且用户数增加，但单用户吞吐下降支持资源竞争，PRB高本身不足以证明拥塞。\",\n  \"support\": \"PRB利用率从52.75%上升到53.83%，用户数从41.31增加到42.81，但单用户吞吐从11.43 Mbps下降到2.25 Mbps。\",\n  \"counter\": \"RSRP和SINR下降，CQI下降，但PRB利用率和用户数增加并不直接证明拥塞。\",\n  \"next_step\": \"进一步调查资源分配和用户分布，确认是否资源拥塞是根本原因。\"\n}",
+      "tool_calls": [],
+      "usage": {
+        "completion_tokens": 160,
+        "prompt_tokens": 1400,
+        "total_tokens": 1560,
+        "prompt_tokens_details": {
+          "cached_tokens": 673
+        }
+      }
+    }
+  ],
+  "seconds": 3.87,
+  "skill_loaded": true
+}

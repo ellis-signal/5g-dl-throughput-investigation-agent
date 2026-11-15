@@ -1,0 +1,121 @@
+{
+  "mode": "C",
+  "case_id": "NR-CELL-1004",
+  "question": "调查小区 NR-CELL-1004 的下行吞吐是否异常，比较可能原因并给出证据。可使用工具查询并计算。",
+  "answer": "{\n  \"label\": \"CONGESTION\",\n  \"reason\": \"PRB利用率增加和用户数增加支持资源竞争，但需要进一步验证拥塞是否导致下行吞吐下降。\",\n  \"support\": \"PRB利用率从47.58%增加到49.04%，用户数从39.96增加到40.97，表明资源可能被过度使用。\",\n  \"counter\": \"RSRP和SINR变化不大，CQI略有上升，可能表明覆盖和干扰不是主要因素。\",\n  \"next_step\": \"进一步调查PRB利用率和用户数之间的关系，以及是否需要调整资源分配策略。\"\n}",
+  "trace": [
+    {
+      "kind": "model",
+      "content": "",
+      "tool_calls": [
+        {
+          "type": "function",
+          "function": {
+            "name": "get_kpi",
+            "arguments": "{\"case_id\": \"NR-CELL-1004\"}"
+          },
+          "id": "cRLQPlUeZ12J7T0YneN0P6uYuvaoOlZ4"
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "compare_windows",
+            "arguments": "{\"case_id\": \"NR-CELL-1004\"}"
+          },
+          "id": "OcjXHc90nvWoQtyXKi749wh80GRI4rFV"
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "calculate_capacity",
+            "arguments": "{\"case_id\": \"NR-CELL-1004\"}"
+          },
+          "id": "NuF5LQwWimlqszTvmsgZ2rZuNTlDwZik"
+        }
+      ],
+      "usage": {
+        "completion_tokens": 85,
+        "prompt_tokens": 677,
+        "total_tokens": 762,
+        "prompt_tokens_details": {
+          "cached_tokens": 646
+        }
+      }
+    },
+    {
+      "kind": "tool",
+      "name": "get_kpi",
+      "arguments": "{\"case_id\": \"NR-CELL-1004\"}",
+      "result": {
+        "id": "NR-CELL-1004",
+        "bandwidth_mhz": 100.0,
+        "baseline": {
+          "sample_count": 24,
+          "rsrp_dbm_median": -90.86500000000001,
+          "sinr_db_median": 17.6,
+          "cqi_mean": 11.94,
+          "prb_utilization_pct_mean": 47.57791666666666,
+          "active_users_mean": 39.9575,
+          "dl_throughput_mbps_mean": 451.87833333333333,
+          "bler_pct_mean": 2.97,
+          "per_user_throughput_mbps": 11.308974118334062
+        },
+        "incident": {
+          "sample_count": 24,
+          "rsrp_dbm_median": -91.075,
+          "sinr_db_median": 17.59,
+          "cqi_mean": 12.029583333333333,
+          "prb_utilization_pct_mean": 49.03875,
+          "active_users_mean": 40.97083333333333,
+          "dl_throughput_mbps_mean": 448.55916666666667,
+          "bler_pct_mean": 2.99,
+          "per_user_throughput_mbps": 10.948255873080443
+        }
+      }
+    },
+    {
+      "kind": "tool",
+      "name": "compare_windows",
+      "arguments": "{\"case_id\": \"NR-CELL-1004\"}",
+      "result": {
+        "rsrp_dbm_median": -0.21,
+        "sinr_db_median": -0.01,
+        "cqi_mean": 0.09,
+        "prb_utilization_pct_mean": 1.461,
+        "active_users_mean": 1.013,
+        "dl_throughput_mbps_mean": -3.319,
+        "bler_pct_mean": 0.02,
+        "per_user_throughput_mbps": -0.361,
+        "throughput_change_percent": -0.73,
+        "users_change_percent": 2.54,
+        "missing": []
+      }
+    },
+    {
+      "kind": "tool",
+      "name": "calculate_capacity",
+      "arguments": "{\"case_id\": \"NR-CELL-1004\"}",
+      "result": {
+        "bandwidth_mhz": 100.0,
+        "sinr_db": 17.59,
+        "shannon_mbps": 586.82,
+        "note": "单链路理想条件参考，不等于实际小区吞吐"
+      }
+    },
+    {
+      "kind": "model",
+      "content": "{\n  \"label\": \"CONGESTION\",\n  \"reason\": \"PRB利用率增加和用户数增加支持资源竞争，但需要进一步验证拥塞是否导致下行吞吐下降。\",\n  \"support\": \"PRB利用率从47.58%增加到49.04%，用户数从39.96增加到40.97，表明资源可能被过度使用。\",\n  \"counter\": \"RSRP和SINR变化不大，CQI略有上升，可能表明覆盖和干扰不是主要因素。\",\n  \"next_step\": \"进一步调查PRB利用率和用户数之间的关系，以及是否需要调整资源分配策略。\"\n}",
+      "tool_calls": [],
+      "usage": {
+        "completion_tokens": 143,
+        "prompt_tokens": 1339,
+        "total_tokens": 1482,
+        "prompt_tokens_details": {
+          "cached_tokens": 673
+        }
+      }
+    }
+  ],
+  "seconds": 3.67,
+  "skill_loaded": true
+}

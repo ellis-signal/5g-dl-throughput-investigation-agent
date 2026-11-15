@@ -1,0 +1,8 @@
+#!/usr/bin/env python3
+"""Run the src-layout package from the repository root, without pip install."""
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent/'src'))
+from wireless_lab.cli import main
+if __name__ == '__main__':
+    sys.exit(main())

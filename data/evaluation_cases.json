@@ -1,0 +1,276 @@
+[
+  {
+    "id": "NR-CELL-1001",
+    "bandwidth_mhz": 100.0,
+    "baseline": {
+      "sample_count": 24,
+      "rsrp_dbm_median": -91.865,
+      "sinr_db_median": 14.025,
+      "cqi_mean": 10.0525,
+      "prb_utilization_pct_mean": 44.7725,
+      "active_users_mean": 38.41125,
+      "dl_throughput_mbps_mean": 377.46125,
+      "bler_pct_mean": 4.022083333333334,
+      "per_user_throughput_mbps": 9.82684109473136
+    },
+    "incident": {
+      "sample_count": 24,
+      "rsrp_dbm_median": -108.055,
+      "sinr_db_median": 8.275,
+      "cqi_mean": 7.0304166666666665,
+      "prb_utilization_pct_mean": 40.25083333333333,
+      "active_users_mean": 35.70916666666667,
+      "dl_throughput_mbps_mean": 205.51666666666665,
+      "bler_pct_mean": 5.9070833333333335,
+      "per_user_throughput_mbps": 5.7552915917948235
+    },
+    "expected": "COVERAGE"
+  },
+  {
+    "id": "NR-CELL-1002",
+    "bandwidth_mhz": 100.0,
+    "baseline": {
+      "sample_count": 24,
+      "rsrp_dbm_median": -94.995,
+      "sinr_db_median": 18.045,
+      "cqi_mean": 11.763333333333334,
+      "prb_utilization_pct_mean": 52.74875,
+      "active_users_mean": 41.308749999999996,
+      "dl_throughput_mbps_mean": 472.2054166666667,
+      "bler_pct_mean": 3.89625,
+      "per_user_throughput_mbps": 11.431123349572832
+    },
+    "incident": {
+      "sample_count": 24,
+      "rsrp_dbm_median": -94.58500000000001,
+      "sinr_db_median": 1.6949999999999998,
+      "cqi_mean": 4.953333333333333,
+      "prb_utilization_pct_mean": 53.83166666666667,
+      "active_users_mean": 42.8125,
+      "dl_throughput_mbps_mean": 96.43583333333333,
+      "bler_pct_mean": 18.900000000000002,
+      "per_user_throughput_mbps": 2.2525158150851583
+    },
+    "expected": "INTERFERENCE"
+  },
+  {
+    "id": "NR-CELL-1003",
+    "bandwidth_mhz": 100.0,
+    "baseline": {
+      "sample_count": 24,
+      "rsrp_dbm_median": -89.71000000000001,
+      "sinr_db_median": 19.865000000000002,
+      "cqi_mean": 13.113333333333335,
+      "prb_utilization_pct_mean": 42.79291666666666,
+      "active_users_mean": 30.319166666666664,
+      "dl_throughput_mbps_mean": 539.865,
+      "bler_pct_mean": 2.9333333333333336,
+      "per_user_throughput_mbps": 17.80606327130803
+    },
+    "incident": {
+      "sample_count": 24,
+      "rsrp_dbm_median": -90.545,
+      "sinr_db_median": 19.225,
+      "cqi_mean": 12.121250000000002,
+      "prb_utilization_pct_mean": 97.46083333333333,
+      "active_users_mean": 130.0225,
+      "dl_throughput_mbps_mean": 434.84458333333333,
+      "bler_pct_mean": 4.9525,
+      "per_user_throughput_mbps": 3.344379498420145
+    },
+    "expected": "CONGESTION"
+  },
+  {
+    "id": "NR-CELL-1004",
+    "bandwidth_mhz": 100.0,
+    "baseline": {
+      "sample_count": 24,
+      "rsrp_dbm_median": -90.86500000000001,
+      "sinr_db_median": 17.6,
+      "cqi_mean": 11.94,
+      "prb_utilization_pct_mean": 47.57791666666666,
+      "active_users_mean": 39.9575,
+      "dl_throughput_mbps_mean": 451.87833333333333,
+      "bler_pct_mean": 2.97,
+      "per_user_throughput_mbps": 11.308974118334062
+    },
+    "incident": {
+      "sample_count": 24,
+      "rsrp_dbm_median": -91.075,
+      "sinr_db_median": 17.59,
+      "cqi_mean": 12.029583333333333,
+      "prb_utilization_pct_mean": 49.03875,
+      "active_users_mean": 40.97083333333333,
+      "dl_throughput_mbps_mean": 448.55916666666667,
+      "bler_pct_mean": 2.99,
+      "per_user_throughput_mbps": 10.948255873080443
+    },
+    "expected": "NORMAL"
+  },
+  {
+    "id": "NR-CELL-1005",
+    "bandwidth_mhz": 100.0,
+    "baseline": {
+      "sample_count": 24,
+      "rsrp_dbm_median": -89.71000000000001,
+      "sinr_db_median": 19.865000000000002,
+      "cqi_mean": 13.113333333333335,
+      "prb_utilization_pct_mean": null,
+      "active_users_mean": 30.319166666666664,
+      "dl_throughput_mbps_mean": 539.865,
+      "bler_pct_mean": 2.9333333333333336,
+      "per_user_throughput_mbps": 17.80606327130803
+    },
+    "incident": {
+      "sample_count": 24,
+      "rsrp_dbm_median": -90.545,
+      "sinr_db_median": 19.225,
+      "cqi_mean": 12.121250000000002,
+      "prb_utilization_pct_mean": null,
+      "active_users_mean": 130.0225,
+      "dl_throughput_mbps_mean": 434.84458333333333,
+      "bler_pct_mean": 4.9525,
+      "per_user_throughput_mbps": 3.344379498420145
+    },
+    "expected": "INSUFFICIENT"
+  },
+  {
+    "id": "NR-CELL-1006",
+    "bandwidth_mhz": 100.0,
+    "baseline": {
+      "sample_count": 24,
+      "rsrp_dbm_median": -91.865,
+      "sinr_db_median": 14.025,
+      "cqi_mean": 10.0525,
+      "prb_utilization_pct_mean": null,
+      "active_users_mean": 38.41125,
+      "dl_throughput_mbps_mean": 377.46125,
+      "bler_pct_mean": 4.022083333333334,
+      "per_user_throughput_mbps": 9.82684109473136
+    },
+    "incident": {
+      "sample_count": 24,
+      "rsrp_dbm_median": -108.055,
+      "sinr_db_median": 8.275,
+      "cqi_mean": 7.0304166666666665,
+      "prb_utilization_pct_mean": null,
+      "active_users_mean": 35.70916666666667,
+      "dl_throughput_mbps_mean": 205.51666666666665,
+      "bler_pct_mean": 5.9070833333333335,
+      "per_user_throughput_mbps": 5.7552915917948235
+    },
+    "expected": "INSUFFICIENT"
+  },
+  {
+    "id": "NR-CELL-1007",
+    "bandwidth_mhz": 100,
+    "baseline": {
+      "dl_throughput_mbps_mean": 390,
+      "rsrp_dbm_median": -89,
+      "sinr_db_median": 19,
+      "cqi_mean": 12,
+      "prb_utilization_pct_mean": 51,
+      "active_users_mean": 39,
+      "bler_pct_mean": 3,
+      "sample_count": 24,
+      "per_user_throughput_mbps": 10.0
+    },
+    "incident": {
+      "dl_throughput_mbps_mean": 201,
+      "rsrp_dbm_median": -100,
+      "sinr_db_median": 10,
+      "cqi_mean": 8,
+      "prb_utilization_pct_mean": 96,
+      "active_users_mean": 91,
+      "bler_pct_mean": 11,
+      "sample_count": 24,
+      "per_user_throughput_mbps": 2.208791208791209
+    },
+    "expected": "INSUFFICIENT",
+    "scenario": "覆盖和高负荷信号并存"
+  },
+  {
+    "id": "NR-CELL-1008",
+    "bandwidth_mhz": 100,
+    "baseline": {
+      "dl_throughput_mbps_mean": 436,
+      "rsrp_dbm_median": -93,
+      "sinr_db_median": 17,
+      "cqi_mean": 12,
+      "prb_utilization_pct_mean": 52,
+      "active_users_mean": 42,
+      "bler_pct_mean": 3,
+      "sample_count": 24,
+      "per_user_throughput_mbps": 10.380952380952381
+    },
+    "incident": {
+      "dl_throughput_mbps_mean": 190,
+      "rsrp_dbm_median": -92,
+      "sinr_db_median": 17,
+      "cqi_mean": 12,
+      "prb_utilization_pct_mean": 54,
+      "active_users_mean": 44,
+      "bler_pct_mean": 4,
+      "sample_count": 24,
+      "per_user_throughput_mbps": 4.318181818181818
+    },
+    "expected": "INSUFFICIENT",
+    "scenario": "空口和负荷基本稳定，吞吐大幅下降"
+  },
+  {
+    "id": "NR-CELL-1009",
+    "bandwidth_mhz": 100,
+    "baseline": {
+      "dl_throughput_mbps_mean": 400,
+      "rsrp_dbm_median": -90,
+      "sinr_db_median": 19,
+      "cqi_mean": 12,
+      "prb_utilization_pct_mean": 47,
+      "active_users_mean": 35,
+      "bler_pct_mean": 3,
+      "sample_count": 24,
+      "per_user_throughput_mbps": 11.428571428571429
+    },
+    "incident": {
+      "dl_throughput_mbps_mean": 364,
+      "rsrp_dbm_median": -91,
+      "sinr_db_median": 18,
+      "cqi_mean": 12,
+      "prb_utilization_pct_mean": 49,
+      "active_users_mean": 38,
+      "bler_pct_mean": 4,
+      "sample_count": 24,
+      "per_user_throughput_mbps": 9.578947368421053
+    },
+    "expected": "NORMAL",
+    "scenario": "接近吞吐异常边界，下降9%"
+  },
+  {
+    "id": "NR-CELL-1010",
+    "bandwidth_mhz": 100,
+    "baseline": {
+      "dl_throughput_mbps_mean": 492,
+      "rsrp_dbm_median": -92,
+      "sinr_db_median": 17,
+      "cqi_mean": 11,
+      "prb_utilization_pct_mean": 53,
+      "active_users_mean": 50,
+      "bler_pct_mean": 4,
+      "sample_count": 24,
+      "per_user_throughput_mbps": 9.84
+    },
+    "incident": {
+      "dl_throughput_mbps_mean": 296,
+      "rsrp_dbm_median": -93,
+      "sinr_db_median": null,
+      "cqi_mean": 7,
+      "prb_utilization_pct_mean": 54,
+      "active_users_mean": 52,
+      "bler_pct_mean": 13,
+      "sample_count": 24,
+      "per_user_throughput_mbps": 5.6923076923076925
+    },
+    "expected": "INSUFFICIENT",
+    "scenario": "独立缺失案例，缺SINR且吞吐下降"
+  }
+]

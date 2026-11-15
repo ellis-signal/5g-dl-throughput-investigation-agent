@@ -1,0 +1,317 @@
+{
+  "mode": "D",
+  "case_id": "NR-CELL-1002",
+  "question": "调查小区 NR-CELL-1002 的下行吞吐是否异常，比较可能原因并给出证据。可使用工具查询并计算。",
+  "answer": "{\n  \"label\": \"INTERFERENCE\",\n  \"reason\": \"该方向满足本实验的组合条件，可优先复核。\",\n  \"next_step\": \"对比邻区同窗SINR、BLER及可用干扰测量。\",\n  \"candidates\": [\n    \"INTERFERENCE\"\n  ],\n  \"missing\": [],\n  \"evidence\": {\n    \"E1\": {\n      \"metric\": \"吞吐变化 (%)\",\n      \"value\": -79.58\n    },\n    \"E2\": {\n      \"metric\": \"RSRP变化 (dB)\",\n      \"value\": 0.41\n    },\n    \"E3\": {\n      \"metric\": \"SINR变化 (dB)\",\n      \"value\": -16.35\n    },\n    \"E4\": {\n      \"metric\": \"CQI变化\",\n      \"value\": -6.81\n    },\n    \"E5\": {\n      \"metric\": \"事发PRB (%)\",\n      \"value\": 53.83166666666667\n    },\n    \"E6\": {\n      \"metric\": \"PRB变化 (百分点)\",\n      \"value\": 1.083\n    },\n    \"E7\": {\n      \"metric\": \"活跃用户数变化 (%)\",\n      \"value\": 3.64\n    },\n    \"E8\": {\n      \"metric\": \"BLER变化 (百分点)\",\n      \"value\": 15.004\n    }\n  },\n  \"hypotheses\": {\n    \"COVERAGE\": [\n      {\n        \"evidence\": \"E2\",\n        \"criterion\": \"RSRP下降至少6 dB\",\n        \"status\": \"削弱\"\n      },\n      {\n        \"evidence\": \"E3\",\n        \"criterion\": \"SINR下降至少5 dB\",\n        \"status\": \"支持\"\n      }\n    ],\n    \"INTERFERENCE\": [\n      {\n        \"evidence\": \"E2\",\n        \"criterion\": \"RSRP变化绝对值至多3 dB\",\n        \"status\": \"支持\"\n      },\n      {\n        \"evidence\": \"E3\",\n        \"criterion\": \"SINR下降至少5 dB\",\n        \"status\": \"支持\"\n      },\n      {\n        \"evidence\": \"E4\",\n        \"criterion\": \"CQI下降至少2\",\n        \"status\": \"支持\"\n      },\n      {\n        \"evidence\": \"E8\",\n        \"criterion\": \"BLER增加至少5个百分点\",\n        \"status\": \"支持\"\n      }\n    ],\n    \"CONGESTION\": [\n      {\n        \"evidence\": \"E5\",\n        \"criterion\": \"事发PRB至少85%\",\n        \"status\": \"削弱\"\n      },\n      {\n        \"evidence\": \"E6\",\n        \"criterion\": \"PRB增加至少15个百分点\",\n        \"status\": \"削弱\"\n      },\n      {\n        \"evidence\": \"E7\",\n        \"criterion\": \"活跃用户数增加至少35%\",\n        \"status\": \"削弱\"\n      }\n    ]\n  }\n}",
+  "trace": [
+    {
+      "kind": "model",
+      "content": "",
+      "tool_calls": [
+        {
+          "type": "function",
+          "function": {
+            "name": "get_kpi",
+            "arguments": "{\"case_id\": \"NR-CELL-1002\"}"
+          },
+          "id": "j5JJCuZ1BqYpmilmY67PM7uxgQdmM6aS"
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "compare_windows",
+            "arguments": "{\"case_id\": \"NR-CELL-1002\"}"
+          },
+          "id": "rYLM8dLIr7bNSaY6WpCrlKpqUpVeH01B"
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "calculate_capacity",
+            "arguments": "{\"case_id\": \"NR-CELL-1002\"}"
+          },
+          "id": "NKlPr2rDzHKRLHKvrnr2XQsyaZx61gml"
+        }
+      ],
+      "usage": {
+        "completion_tokens": 85,
+        "prompt_tokens": 677,
+        "total_tokens": 762,
+        "prompt_tokens_details": {
+          "cached_tokens": 646
+        }
+      }
+    },
+    {
+      "kind": "tool",
+      "name": "get_kpi",
+      "arguments": "{\"case_id\": \"NR-CELL-1002\"}",
+      "result": {
+        "id": "NR-CELL-1002",
+        "bandwidth_mhz": 100.0,
+        "baseline": {
+          "sample_count": 24,
+          "rsrp_dbm_median": -94.995,
+          "sinr_db_median": 18.045,
+          "cqi_mean": 11.763333333333334,
+          "prb_utilization_pct_mean": 52.74875,
+          "active_users_mean": 41.308749999999996,
+          "dl_throughput_mbps_mean": 472.2054166666667,
+          "bler_pct_mean": 3.89625,
+          "per_user_throughput_mbps": 11.431123349572832
+        },
+        "incident": {
+          "sample_count": 24,
+          "rsrp_dbm_median": -94.58500000000001,
+          "sinr_db_median": 1.6949999999999998,
+          "cqi_mean": 4.953333333333333,
+          "prb_utilization_pct_mean": 53.83166666666667,
+          "active_users_mean": 42.8125,
+          "dl_throughput_mbps_mean": 96.43583333333333,
+          "bler_pct_mean": 18.900000000000002,
+          "per_user_throughput_mbps": 2.2525158150851583
+        }
+      }
+    },
+    {
+      "kind": "tool",
+      "name": "compare_windows",
+      "arguments": "{\"case_id\": \"NR-CELL-1002\"}",
+      "result": {
+        "rsrp_dbm_median": 0.41,
+        "sinr_db_median": -16.35,
+        "cqi_mean": -6.81,
+        "prb_utilization_pct_mean": 1.083,
+        "active_users_mean": 1.504,
+        "dl_throughput_mbps_mean": -375.77,
+        "bler_pct_mean": 15.004,
+        "per_user_throughput_mbps": -9.179,
+        "throughput_change_percent": -79.58,
+        "users_change_percent": 3.64,
+        "missing": []
+      }
+    },
+    {
+      "kind": "tool",
+      "name": "calculate_capacity",
+      "arguments": "{\"case_id\": \"NR-CELL-1002\"}",
+      "result": {
+        "bandwidth_mhz": 100.0,
+        "sinr_db": 1.6949999999999998,
+        "shannon_mbps": 130.88,
+        "note": "单链路理想条件参考，不等于实际小区吞吐"
+      }
+    },
+    {
+      "kind": "model",
+      "content": "{\n  \"label\": \"CONGESTION\",\n  \"reason\": \"PRB利用率高且用户数增加，但单用户吞吐下降支持资源竞争，PRB高本身不足以证明拥塞。\",\n  \"support\": \"PRB利用率从52.75%上升到53.83%，用户数从41.31增加到42.81，但单用户吞吐从11.43 Mbps下降到2.25 Mbps。\",\n  \"counter\": \"RSRP和SINR下降，CQI下降，但PRB利用率和用户数增加并不直接证明拥塞。\",\n  \"next_step\": \"进一步调查资源分配和用户分布，确认是否资源拥塞是根本原因。\"\n}",
+      "tool_calls": [],
+      "usage": {
+        "completion_tokens": 160,
+        "prompt_tokens": 1400,
+        "total_tokens": 1560,
+        "prompt_tokens_details": {
+          "cached_tokens": 673
+        }
+      }
+    },
+    {
+      "kind": "review",
+      "result": {
+        "label": "INTERFERENCE",
+        "reason": "该方向满足本实验的组合条件，可优先复核。",
+        "next_step": "对比邻区同窗SINR、BLER及可用干扰测量。",
+        "candidates": [
+          "INTERFERENCE"
+        ],
+        "missing": [],
+        "evidence": {
+          "E1": {
+            "metric": "吞吐变化 (%)",
+            "value": -79.58
+          },
+          "E2": {
+            "metric": "RSRP变化 (dB)",
+            "value": 0.41
+          },
+          "E3": {
+            "metric": "SINR变化 (dB)",
+            "value": -16.35
+          },
+          "E4": {
+            "metric": "CQI变化",
+            "value": -6.81
+          },
+          "E5": {
+            "metric": "事发PRB (%)",
+            "value": 53.83166666666667
+          },
+          "E6": {
+            "metric": "PRB变化 (百分点)",
+            "value": 1.083
+          },
+          "E7": {
+            "metric": "活跃用户数变化 (%)",
+            "value": 3.64
+          },
+          "E8": {
+            "metric": "BLER变化 (百分点)",
+            "value": 15.004
+          }
+        },
+        "hypotheses": {
+          "COVERAGE": [
+            {
+              "evidence": "E2",
+              "criterion": "RSRP下降至少6 dB",
+              "status": "削弱"
+            },
+            {
+              "evidence": "E3",
+              "criterion": "SINR下降至少5 dB",
+              "status": "支持"
+            }
+          ],
+          "INTERFERENCE": [
+            {
+              "evidence": "E2",
+              "criterion": "RSRP变化绝对值至多3 dB",
+              "status": "支持"
+            },
+            {
+              "evidence": "E3",
+              "criterion": "SINR下降至少5 dB",
+              "status": "支持"
+            },
+            {
+              "evidence": "E4",
+              "criterion": "CQI下降至少2",
+              "status": "支持"
+            },
+            {
+              "evidence": "E8",
+              "criterion": "BLER增加至少5个百分点",
+              "status": "支持"
+            }
+          ],
+          "CONGESTION": [
+            {
+              "evidence": "E5",
+              "criterion": "事发PRB至少85%",
+              "status": "削弱"
+            },
+            {
+              "evidence": "E6",
+              "criterion": "PRB增加至少15个百分点",
+              "status": "削弱"
+            },
+            {
+              "evidence": "E7",
+              "criterion": "活跃用户数增加至少35%",
+              "status": "削弱"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "seconds": 3.87,
+  "skill_loaded": true,
+  "model_answer": "{\n  \"label\": \"CONGESTION\",\n  \"reason\": \"PRB利用率高且用户数增加，但单用户吞吐下降支持资源竞争，PRB高本身不足以证明拥塞。\",\n  \"support\": \"PRB利用率从52.75%上升到53.83%，用户数从41.31增加到42.81，但单用户吞吐从11.43 Mbps下降到2.25 Mbps。\",\n  \"counter\": \"RSRP和SINR下降，CQI下降，但PRB利用率和用户数增加并不直接证明拥塞。\",\n  \"next_step\": \"进一步调查资源分配和用户分布，确认是否资源拥塞是根本原因。\"\n}",
+  "review": {
+    "label": "INTERFERENCE",
+    "reason": "该方向满足本实验的组合条件，可优先复核。",
+    "next_step": "对比邻区同窗SINR、BLER及可用干扰测量。",
+    "candidates": [
+      "INTERFERENCE"
+    ],
+    "missing": [],
+    "evidence": {
+      "E1": {
+        "metric": "吞吐变化 (%)",
+        "value": -79.58
+      },
+      "E2": {
+        "metric": "RSRP变化 (dB)",
+        "value": 0.41
+      },
+      "E3": {
+        "metric": "SINR变化 (dB)",
+        "value": -16.35
+      },
+      "E4": {
+        "metric": "CQI变化",
+        "value": -6.81
+      },
+      "E5": {
+        "metric": "事发PRB (%)",
+        "value": 53.83166666666667
+      },
+      "E6": {
+        "metric": "PRB变化 (百分点)",
+        "value": 1.083
+      },
+      "E7": {
+        "metric": "活跃用户数变化 (%)",
+        "value": 3.64
+      },
+      "E8": {
+        "metric": "BLER变化 (百分点)",
+        "value": 15.004
+      }
+    },
+    "hypotheses": {
+      "COVERAGE": [
+        {
+          "evidence": "E2",
+          "criterion": "RSRP下降至少6 dB",
+          "status": "削弱"
+        },
+        {
+          "evidence": "E3",
+          "criterion": "SINR下降至少5 dB",
+          "status": "支持"
+        }
+      ],
+      "INTERFERENCE": [
+        {
+          "evidence": "E2",
+          "criterion": "RSRP变化绝对值至多3 dB",
+          "status": "支持"
+        },
+        {
+          "evidence": "E3",
+          "criterion": "SINR下降至少5 dB",
+          "status": "支持"
+        },
+        {
+          "evidence": "E4",
+          "criterion": "CQI下降至少2",
+          "status": "支持"
+        },
+        {
+          "evidence": "E8",
+          "criterion": "BLER增加至少5个百分点",
+          "status": "支持"
+        }
+      ],
+      "CONGESTION": [
+        {
+          "evidence": "E5",
+          "criterion": "事发PRB至少85%",
+          "status": "削弱"
+        },
+        {
+          "evidence": "E6",
+          "criterion": "PRB增加至少15个百分点",
+          "status": "削弱"
+        },
+        {
+          "evidence": "E7",
+          "criterion": "活跃用户数增加至少35%",
+          "status": "削弱"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "mode": "A",
+  "case_id": "NR-CELL-1005",
+  "question": "调查小区 NR-CELL-1005 的下行吞吐是否异常，比较可能原因并给出证据。\n以下是可用的基线和异常窗口汇总：{\"id\": \"NR-CELL-1005\", \"bandwidth_mhz\": 100.0, \"baseline\": {\"sample_count\": 24, \"rsrp_dbm_median\": -89.71000000000001, \"sinr_db_median\": 19.865000000000002, \"cqi_mean\": 13.113333333333335, \"prb_utilization_pct_mean\": null, \"active_users_mean\": 30.319166666666664, \"dl_throughput_mbps_mean\": 539.865, \"bler_pct_mean\": 2.9333333333333336, \"per_user_throughput_mbps\": 17.80606327130803}, \"incident\": {\"sample_count\": 24, \"rsrp_dbm_median\": -90.545, \"sinr_db_median\": 19.225, \"cqi_mean\": 12.121250000000002, \"prb_utilization_pct_mean\": null, \"active_users_mean\": 130.0225, \"dl_throughput_mbps_mean\": 434.84458333333333, \"bler_pct_mean\": 4.9525, \"per_user_throughput_mbps\": 3.344379498420145}}",
+  "answer": "{\n  \"label\": \"CONGESTION\",\n  \"reason\": \"下行吞吐量在异常窗口中显著下降，且用户平均吞吐量降低，可能表明小区资源分配不足或用户数增加导致的拥塞。\",\n  \"support\": \"基线中dl_throughput_mbps_mean为539.865 Mbps，而在异常窗口中下降至434.84458333333333 Mbps，降幅达19.4%。同时，per_user_throughput_mbps从17.806 Mbps下降至3.344 Mbps，表明用户数增加或资源分配不均。\",\n  \"counter\": \"异常窗口中active_users_mean从30.319增加到130.0225，用户数显著增加，可能加剧了资源竞争。\",\n  \"next_step\": \"检查小区的PRB利用率和用户数变化，确认是否因用户数激增或资源分配不均导致拥塞，并考虑调整资源分配策略或增加小区容量。\"\n}",
+  "trace": [
+    {
+      "kind": "model",
+      "content": "{\n  \"label\": \"CONGESTION\",\n  \"reason\": \"下行吞吐量在异常窗口中显著下降，且用户平均吞吐量降低，可能表明小区资源分配不足或用户数增加导致的拥塞。\",\n  \"support\": \"基线中dl_throughput_mbps_mean为539.865 Mbps，而在异常窗口中下降至434.84458333333333 Mbps，降幅达19.4%。同时，per_user_throughput_mbps从17.806 Mbps下降至3.344 Mbps，表明用户数增加或资源分配不均。\",\n  \"counter\": \"异常窗口中active_users_mean从30.319增加到130.0225，用户数显著增加，可能加剧了资源竞争。\",\n  \"next_step\": \"检查小区的PRB利用率和用户数变化，确认是否因用户数激增或资源分配不均导致拥塞，并考虑调整资源分配策略或增加小区容量。\"\n}",
+      "tool_calls": [],
+      "usage": {
+        "completion_tokens": 228,
+        "prompt_tokens": 474,
+        "total_tokens": 702,
+        "prompt_tokens_details": {
+          "cached_tokens": 64
+        }
+      }
+    }
+  ],
+  "seconds": 3.32,
+  "skill_loaded": false
+}

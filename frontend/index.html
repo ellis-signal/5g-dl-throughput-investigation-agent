@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#0b1013" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230b1013'/%3E%3Crect x='6' y='6' width='8' height='8' fill='%234fd1a5'/%3E%3Crect x='18' y='18' width='8' height='8' fill='%23ffb648'/%3E%3C/svg%3E" />
+<meta name="description" content="5G 下行吞吐率根因调查台：把覆盖、干扰、拥塞四类假设的证据串成一条可复核的链。" />
+<title>RAN 取证台 · 5G 下行吞吐率根因调查</title>
+<link rel="stylesheet" href="style.css" />
+<script src="ledger-data.js" defer></script>
+<script src="app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+
+<svg class="sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h13m-5-6 6 6-6 6"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m4 12 5 5L20 6"/></symbol>
+  <symbol id="i-cross" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+  <symbol id="i-dash" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 20 6v6c0 5-8 9-8 9S4 17 4 12V6l8-3Z"/></symbol>
+  <symbol id="i-pulse" viewBox="0 0 24 24"><path d="M3 12h4l2-6 4 12 2-6h6"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6V3Zm8 0v4h4"/></symbol>
+</svg>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    <span class="brand-name">RAN FORENSICS<small>无线取证台 · 下行吞吐率根因调查</small></span>
+  </div>
+  <div class="topbar-case">
+    <span class="mono">CASE</span>
+    <b id="caseId">#DL-2026-0002</b>
+    <span class="dot" aria-hidden="true"></span>
+    <span class="mono">WINDOW</span>
+    <b id="caseWindow">10-01 → 10-08</b>
+  </div>
+  <div class="topbar-actions"><a href="agent.html" style="color:#5ad2e6">Agent 调查</a>
+    <span class="chip chip-pending" id="auditChip"><svg class="ico"><use href="#i-shield"/></svg><span id="auditText">未审计 UNVERIFIED</span></span>
+    <button class="btn btn-ghost" id="auditBtn" type="button">运行独立审计</button>
+  </div>
+</header>
+
+<main id="main" class="layout">
+  <aside class="rail" aria-label="案件信息">
+    <section class="rail-block">
+      <h2 class="rail-title mono">涉案小区 / SUBJECT</h2>
+      <ul class="cell-list" id="cellList" role="tablist" aria-label="选择小区"></ul>
+    </section>
+
+    <section class="rail-block">
+      <h2 class="rail-title mono">案卷 / DOSSIER</h2>
+      <dl class="facts">
+        <div><dt>制式</dt><dd>NR · n78</dd></div>
+        <div><dt>带宽</dt><dd>100 MHz</dd></div>
+        <div><dt>样本</dt><dd>24 h + 24 h</dd></div>
+        <div><dt>数据源</dt><dd class="mono truncate" id="factSource">dl_kpi.json</dd></div>
+        <div><dt>摘要</dt><dd class="mono truncate" id="factHash">sha256:…</dd></div>
+      </dl>
+    </section>
+
+    <section class="rail-block">
+      <h2 class="rail-title mono">调查进度 / TRACE</h2>
+      <ol class="timeline" id="timeline">
+        <li class="done"><span class="mono">01</span>立案 · 校验数据</li>
+        <li class="done"><span class="mono">02</span>取证 · 差值 / 香农标尺</li>
+        <li class="done"><span class="mono">03</span>假设 · 必要条件</li>
+        <li class="active"><span class="mono">04</span>反证 · 排除竞争假设</li>
+        <li><span class="mono">05</span>结论 · 待独立审计</li>
+      </ol>
+    </section>
+  </aside>
+
+  <section class="stage" aria-label="调查主体">
+    <header class="incident">
+      <div class="incident-head">
+        <p class="eyebrow mono">INCIDENT / 下行吞吐率异常下降</p>
+        <h1><span id="incidentId">NR-CELL-1002</span><span class="sector" id="incidentSector">Sector 2 · 城区</span></h1>
+        <p class="complaint" id="incidentComplaint">用户反馈网页与视频明显变慢。</p>
+      </div>
+      <div class="headline">
+        <div class="headline-num">
+          <span class="mono label">DL THROUGHPUT</span>
+          <div class="big"><b id="tputNow">96</b><span class="unit">Mbps</span></div>
+          <div class="sub"><span id="tputBase">基线 470</span><span class="delta" id="tputDelta">-79.6%</span></div>
+        </div>
+        <div class="tiles" id="metricTiles" aria-label="关键指标对比"></div>
+      </div>
+    </header>
+
+    <section class="block" aria-labelledby="hypTitle">
+      <div class="block-head">
+        <h2 id="hypTitle">假设与证据<span class="mono sub">HYPOTHESES × 4</span></h2>
+        <p class="block-note">以下为教学启发式规则，未命中条件不等于排除真实原因。</p>
+      </div>
+      <div class="hyp-grid" id="hypGrid"></div>
+    </section>
+
+    <section class="block" aria-labelledby="ledgerTitle">
+      <div class="block-head">
+        <h2 id="ledgerTitle">证据账本<span class="mono sub" id="ledgerCount">EVIDENCE LEDGER</span></h2>
+        <div class="filters" role="group" aria-label="筛选证据">
+          <button class="filter is-on" data-filter="all" type="button">全部</button>
+          <button class="filter" data-filter="supports" type="button">支持</button>
+          <button class="filter" data-filter="refutes" type="button">否定</button>
+          <label class="toggle"><input type="checkbox" id="prbToggle" />隐藏 PRB 字段</label>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="ledger">
+          <thead>
+            <tr><th scope="col">证据 ID</th><th scope="col">指标</th><th scope="col" class="num">基线</th><th scope="col" class="num">事发</th><th scope="col" class="num">变化</th><th scope="col">阈值</th><th scope="col">判定</th></tr>
+          </thead>
+          <tbody id="ledgerBody"></tbody>
+        </table>
+      </div>
+      <p class="table-foot mono" id="ledgerFoot">按证据 ID 排序 · 每条可回溯至原始样本</p>
+    </section>
+  </section>
+
+  <aside class="verdict" aria-label="结论与建议">
+    <section class="verdict-card">
+      <p class="eyebrow mono">CONCLUSION</p>
+      <h2 class="cause" id="causeLabel">信号干扰</h2>
+      <p class="cause-code mono" id="causeCode">INTERFERENCE</p>
+      <div class="meter" id="confMeter" aria-hidden="true"></div>
+      <p class="conf-line"><span class="mono">置信度</span><b id="confValue">0.93</b><span class="conf-note">规则内一致度，非概率</span></p>
+      <p class="reason" id="reason">覆盖未变化、SINR 下降 16.5 dB，干扰的必要条件全部满足。</p>
+    </section>
+
+    <section class="verdict-section">
+      <h3 class="mono">排除项 / RULED OUT</h3>
+      <ul class="rule-out" id="ruleOut"></ul>
+    </section>
+
+    <section class="verdict-section">
+      <h3 class="mono">缺失证据 / GAPS</h3>
+      <ul class="gaps" id="gaps"></ul>
+    </section>
+
+    <section class="verdict-section">
+      <h3 class="mono">处置建议 / ACTIONS</h3>
+      <ol class="actions" id="actions"></ol>
+      <p class="approval mono">全部建议需人工确认 + 变更窗口，不提供一键执行</p>
+    </section>
+
+    <section class="receipt" id="receipt">
+      <p class="mono">AUDIT RECEIPT</p>
+      <p class="receipt-status" id="receiptStatus">尚无回执 · 报告不可交付</p>
+      <p class="mono receipt-hash" id="receiptHash"></p>
+      <p class="report-link" id="reportLink"></p>
+    </section>
+  </aside>
+</main>
+
+<footer class="foot">
+  <p id="sourceNote">示例账本（静态嵌入）· 4 小区 × 48 小时 · 数字与规则来自项目设计文档，正式系统由后端账本提供</p>
+  <p class="mono">RAN FORENSICS · 反证优先 · UNDETERMINED IS A VALID ANSWER</p>
+</footer>
+
+<noscript><p class="noscript">本页需要启用 JavaScript 才能渲染账本。</p></noscript>
+</body>
+</html>

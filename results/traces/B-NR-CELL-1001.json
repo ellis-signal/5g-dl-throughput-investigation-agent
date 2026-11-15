@@ -1,0 +1,120 @@
+{
+  "mode": "B",
+  "case_id": "NR-CELL-1001",
+  "question": "调查小区 NR-CELL-1001 的下行吞吐是否异常，比较可能原因并给出证据。可使用工具查询并计算。",
+  "answer": "{\n  \"label\": \"CONGESTION\",\n  \"reason\": \"下行吞吐在异常窗口显著下降，且理想香农容量参考值表明理论最大吞吐与实际吞吐存在差距，可能由于资源分配或用户数限制。\",\n  \"support\": \"异常窗口的下行吞吐平均值为205.516 Mbps，比基线窗口的377.461 Mbps下降了45.55%。理想香农容量参考值为294.9 Mbps，实际吞吐低于理论最大值。\",\n  \"counter\": \"异常窗口的PRB利用率平均为40.25%，低于基线窗口的44.77%，可能表明资源分配不足或用户数限制。\",\n  \"next_step\": \"检查小区的资源分配策略和用户数限制，优化资源分配以提高吞吐性能。\"\n}",
+  "trace": [
+    {
+      "kind": "model",
+      "content": "",
+      "tool_calls": [
+        {
+          "type": "function",
+          "function": {
+            "name": "get_kpi",
+            "arguments": "{\"case_id\": \"NR-CELL-1001\"}"
+          },
+          "id": "MeNYQroxcEwCdebvVX0vEHn4N5y9Oqrd"
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "compare_windows",
+            "arguments": "{\"case_id\": \"NR-CELL-1001\"}"
+          },
+          "id": "S59Qwfa0ex6tc8H05Pxn2jL6waN3hDBj"
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "calculate_capacity",
+            "arguments": "{\"case_id\": \"NR-CELL-1001\"}"
+          },
+          "id": "3JFfvFgO6nM2QMvIOY0C4mQdnmucGuCC"
+        }
+      ],
+      "usage": {
+        "completion_tokens": 85,
+        "prompt_tokens": 386,
+        "total_tokens": 471,
+        "prompt_tokens_details": {
+          "cached_tokens": 49
+        }
+      }
+    },
+    {
+      "kind": "tool",
+      "name": "get_kpi",
+      "arguments": "{\"case_id\": \"NR-CELL-1001\"}",
+      "result": {
+        "id": "NR-CELL-1001",
+        "bandwidth_mhz": 100.0,
+        "baseline": {
+          "sample_count": 24,
+          "rsrp_dbm_median": -91.865,
+          "sinr_db_median": 14.025,
+          "cqi_mean": 10.0525,
+          "prb_utilization_pct_mean": 44.7725,
+          "active_users_mean": 38.41125,
+          "dl_throughput_mbps_mean": 377.46125,
+          "bler_pct_mean": 4.022083333333334,
+          "per_user_throughput_mbps": 9.82684109473136
+        },
+        "incident": {
+          "sample_count": 24,
+          "rsrp_dbm_median": -108.055,
+          "sinr_db_median": 8.275,
+          "cqi_mean": 7.0304166666666665,
+          "prb_utilization_pct_mean": 40.25083333333333,
+          "active_users_mean": 35.70916666666667,
+          "dl_throughput_mbps_mean": 205.51666666666665,
+          "bler_pct_mean": 5.9070833333333335,
+          "per_user_throughput_mbps": 5.7552915917948235
+        }
+      }
+    },
+    {
+      "kind": "tool",
+      "name": "compare_windows",
+      "arguments": "{\"case_id\": \"NR-CELL-1001\"}",
+      "result": {
+        "rsrp_dbm_median": -16.19,
+        "sinr_db_median": -5.75,
+        "cqi_mean": -3.022,
+        "prb_utilization_pct_mean": -4.522,
+        "active_users_mean": -2.702,
+        "dl_throughput_mbps_mean": -171.945,
+        "bler_pct_mean": 1.885,
+        "per_user_throughput_mbps": -4.072,
+        "throughput_change_percent": -45.55,
+        "missing": []
+      }
+    },
+    {
+      "kind": "tool",
+      "name": "calculate_capacity",
+      "arguments": "{\"case_id\": \"NR-CELL-1001\"}",
+      "result": {
+        "bandwidth_mhz": 100.0,
+        "sinr_db": 8.275,
+        "shannon_mbps": 294.9,
+        "note": "单链路理想条件参考，不等于实际小区吞吐"
+      }
+    },
+    {
+      "kind": "model",
+      "content": "{\n  \"label\": \"CONGESTION\",\n  \"reason\": \"下行吞吐在异常窗口显著下降，且理想香农容量参考值表明理论最大吞吐与实际吞吐存在差距，可能由于资源分配或用户数限制。\",\n  \"support\": \"异常窗口的下行吞吐平均值为205.516 Mbps，比基线窗口的377.461 Mbps下降了45.55%。理想香农容量参考值为294.9 Mbps，实际吞吐低于理论最大值。\",\n  \"counter\": \"异常窗口的PRB利用率平均为40.25%，低于基线窗口的44.77%，可能表明资源分配不足或用户数限制。\",\n  \"next_step\": \"检查小区的资源分配策略和用户数限制，优化资源分配以提高吞吐性能。\"\n}",
+      "tool_calls": [],
+      "usage": {
+        "completion_tokens": 188,
+        "prompt_tokens": 1052,
+        "total_tokens": 1240,
+        "prompt_tokens_details": {
+          "cached_tokens": 382
+        }
+      }
+    }
+  ],
+  "seconds": 4.63,
+  "skill_loaded": false
+}
